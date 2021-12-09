@@ -1,0 +1,70 @@
+<PROGRAMME_DOMUS>
+
+<DECLARATION_APPAREILS>
+	eclairage e1, e2.
+	volet v1.
+	autre_appareil(hifi) hf.
+	autre_appareil(cafetiere) cafe.
+	volet v2.
+
+	definir mon_eclairage_salon = {e1,e2}.
+</DECLARATION_APPAREILS>
+
+<DECLARATION_INTERFACES>
+   	interrupteur b1,b2,b3.
+	mobile t1.
+	telecommande zap.
+	interrupteur b4.
+</DECLARATION_INTERFACES>
+
+<DECLARATION_SCENARII>
+	<SCENARIO bonjour>
+		v1.ouvrir;
+		v2.ouvrir;
+		e1.eteindre;
+		hf.allumer;
+		cafe.allumer;
+	</SCENARIO bonjour>
+
+	<SCENARIO bonjour2>
+		pourtout v:volet faire v.ouvrir; fait;
+		e1.eteindre;
+		pourtout e:autre_appareil faire e.allumer; fait;
+	</SCENARIO bonjour2>
+
+	<SCENARIO soiree>
+		pourtout e:mon_eclairage_salon faire e.allumer; fait;
+	</SCENARIO soiree>
+
+	<SCENARIO fincafe>
+		message("Extinction de la machine a cafe."); 
+		pourtout e:autre_appareil(cafetiere) faire e.eteindre; fait;
+	</SCENARIO fincafe>
+
+	<SCENARIO soiree_musique>
+		executer_scenario soiree; 
+		si (hf.etat == allume) alors message("La hifi est deja allumee !"); 
+		sinon hf.allumer; fsi;
+	</SCENARIO soiree_musique>
+
+	<SCENARIO verif>
+		pourtout e:eclairage faire message("Etat de ",e," = ",e.etat); fait;
+		si (hf.etat == allume) alors message("La hifi est allumee."); fsi;
+	</SCENARIO verif>
+</DECLARATION_SCENARII>
+
+<DECLARATION_COMMANDES>
+	associer b1 = bonjour.
+	associer t1 = bonjour.
+	associer zap = bonjour.
+
+	programmer soiree_musique = (2017,12,31,19,0).
+	programmer soiree = (2017,_,1,18,0).    
+	programmer soiree_musique = {(2017,7,14,19,30),(2017,12,24,18,30)}.
+
+	associer b2 = bonjour2.
+	associer b3 = {soiree,fincafe,verif}.
+	associer b4 = soiree_musique.
+</DECLARATION_COMMANDES>
+</PROGRAMME_DOMUS>
+

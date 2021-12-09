@@ -1,0 +1,28 @@
+<PROGRAMME_DOMUS>
+
+<DECLARATION_APPAREILS>
+	eclairage e1, e2.
+	volet v1.
+</DECLARATION_APPAREILS>
+
+<DECLARATION_INTERFACES>
+   	interrupteur b1.
+	mobile t1.
+	telecommande zap.
+</DECLARATION_INTERFACES>
+
+<DECLARATION_SCENARII>
+	<SCENARIO bonjour>
+		v1.ouvrir;
+		e1.tamiser;
+		e2.allumer;
+	</SCENARIO bonjour>
+</DECLARATION_SCENARII>
+
+<DECLARATION_COMMANDES>
+	associer b1 = bonjour.
+	associer t1 = bonjour.
+	associer zap = bonjour.
+</DECLARATION_COMMANDES>
+</PROGRAMME_DOMUS>
+
