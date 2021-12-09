@@ -160,7 +160,6 @@ terminal 				SI;
 terminal 				FINSI;
 terminal 				ALORS;
 terminal 				SINON;
-terminal 				FSI;
 terminal 				POURTOUT;
 terminal 				FAIRE;
 terminal 				FAIT;
@@ -187,11 +186,13 @@ terminal String				TYPE_INTERFACE;
 terminal String				ACTION_APPAREIL;
 terminal String				ETAT_APPAREIL;
 
-terminal VAR,PT;
+terminal VAR;
 
 non terminal domus,prog,dec_appareils,listeDeclarationAppareils,liste_autres_appareils,dec_interfaces,listeDeclarationInterfaces,listeInterfaces, varia;
 non terminal dec_scenarii,listeDeclarationScenariis,listeDeclarationScenarios,categorie_appareils,contenu_message,identOUaction,liste_dates,entierOuUnderscore, dec_commandes,listeDeclarationCommandes,liste_ident,appareils ;
- 
+non terminal condition_ident, action_ident; 
+
+
  // un 'fichier' DOMUS
 domus	::=  PROGRAMME_DOMUS_DEBUT  prog PROGRAMME_DOMUS_FIN {: System.out.println("PROGRAMME_DOMUS_FIN OK"+parser.pline()+","+parser.pcolumn()); :};
 
@@ -226,28 +227,45 @@ listeDeclarationScenariis ::= DEC_SCENARIO_DEBUT IDENT CROCHET_FERMANT listeDecl
 
 listeDeclarationScenarios ::= EXECUTER_SCENARIO IDENT POINTVIRGULE
 							| EXECUTER_SCENARIO IDENT POINTVIRGULE  listeDeclarationScenarios
-							| POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE IDENT POINT ACTION_APPAREIL POINTVIRGULE FAIT POINTVIRGULE
-							| POURTOUT IDENT DEUXPOINTS categorie_appareils  FAIRE IDENT POINT ACTION_APPAREIL POINTVIRGULE FAIT POINTVIRGULE listeDeclarationScenarios
-							| IDENT POINT ACTION_APPAREIL POINTVIRGULE
-							| IDENT POINT ACTION_APPAREIL POINTVIRGULE listeDeclarationScenarios
-							| SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE  
-							| SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE  listeDeclarationScenarios
-							| SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE
-							| SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
+							| POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE action_ident POINTVIRGULE FAIT POINTVIRGULE
+							| POURTOUT IDENT DEUXPOINTS categorie_appareils  FAIRE action_ident POINTVIRGULE FAIT POINTVIRGULE listeDeclarationScenarios
+							| action_ident POINTVIRGULE
+							| action_ident POINTVIRGULE listeDeclarationScenarios
+							| SI PG condition_ident PD ALORS action_ident POINTVIRGULE  
+							| SI PG condition_ident PD ALORS action_ident POINTVIRGULE  listeDeclarationScenarios
+							| SI PG condition_ident PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE 
+							| SI PG condition_ident PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
+							| SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE
+							| SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
 							| MESSAGE PG contenu_message PD POINTVIRGULE
 							| MESSAGE PG contenu_message PD POINTVIRGULE listeDeclarationScenarios
 							| SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE
 							| SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
-							| SINON IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE 
-							| SINON IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
-							| SINON SI MESSAGE PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE 
-							| SINON SI MESSAGE PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE listeDeclarationScenarios
-							| SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS  MESSAGE PG contenu_message PD POINTVIRGULE   
-							| SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS  MESSAGE PG contenu_message PD POINTVIRGULE  listeDeclarationScenarios
+							| SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE
+							| SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
+							| SINON action_ident POINTVIRGULE MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE  FINSI POINTVIRGULE 
+							| SINON action_ident POINTVIRGULE MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE  FINSI POINTVIRGULE listeDeclarationScenarios
+							| SINON action_ident POINTVIRGULE FINSI POINTVIRGULE 
+							| SINON action_ident POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
+							| SINON action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE 
+							| SINON action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
+							| SINON SI MESSAGE PG condition_ident PD ALORS action_ident POINTVIRGULE 
+							| SINON SI MESSAGE PG condition_ident PD ALORS action_ident POINTVIRGULE listeDeclarationScenarios
+							| SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE 
+							| SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE listeDeclarationScenarios
+							| SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE
+							| SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
+							| SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE
+							| SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios
+							| SI PG condition_ident PD ALORS  MESSAGE PG contenu_message PD POINTVIRGULE   
+							| SI PG condition_ident PD ALORS  MESSAGE PG contenu_message PD POINTVIRGULE  listeDeclarationScenarios
 							| POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE MESSAGE PG contenu_message PD POINTVIRGULE FAIT POINTVIRGULE
 							| POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE MESSAGE PG contenu_message PD POINTVIRGULE FAIT POINTVIRGULE listeDeclarationScenarios;
 
 categorie_appareils       ::= TYPE_APPAREIL | AUTRE_APPAREIL | AUTRE_APPAREIL PG TYPE_APPAREIL PD | IDENT;
+
+condition_ident			::= IDENT POINT ETAT EGALE ETAT_APPAREIL;
+action_ident			::= IDENT POINT ACTION_APPAREIL;
 
 /*contenu_message           ::=  IDENT | IDENT POINT ETAT | CHAINE 
 							| IDENT contenu_message | IDENT POINT ETAT contenu_message | CHAINE  contenu_message | VIRGULE IDENT POINT ETAT | VIRGULE IDENT POINT ETAT contenu_message

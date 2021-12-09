@@ -31,26 +31,31 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\077\000\002\002\005\000\002\002\004\000\002\003" +
+    "\000\117\000\002\002\005\000\002\002\004\000\002\003" +
     "\006\000\002\004\005\000\002\005\005\000\002\005\006" +
     "\000\002\005\005\000\002\005\006\000\002\005\011\000" +
     "\002\005\012\000\002\006\006\000\002\007\005\000\002" +
     "\010\005\000\002\010\006\000\002\011\003\000\002\011" +
     "\005\000\002\013\005\000\002\014\011\000\002\014\012" +
-    "\000\002\015\005\000\002\015\006\000\002\015\015\000" +
-    "\002\015\016\000\002\015\006\000\002\015\007\000\002" +
-    "\015\017\000\002\015\020\000\002\015\021\000\002\015" +
-    "\022\000\002\015\007\000\002\015\010\000\002\015\012" +
-    "\000\002\015\013\000\002\015\011\000\002\015\012\000" +
-    "\002\015\021\000\002\015\022\000\002\015\020\000\002" +
-    "\015\021\000\002\015\016\000\002\015\017\000\002\016" +
-    "\003\000\002\016\003\000\002\016\006\000\002\016\003" +
-    "\000\002\017\003\000\002\017\007\000\002\017\007\000" +
-    "\002\023\005\000\002\024\007\000\002\024\010\000\002" +
-    "\024\011\000\002\024\012\000\002\024\007\000\002\024" +
-    "\010\000\002\024\011\000\002\024\012\000\002\025\003" +
-    "\000\002\025\005\000\002\021\015\000\002\021\017\000" +
-    "\002\022\003\000\002\022\003" });
+    "\000\002\015\005\000\002\015\006\000\002\015\013\000" +
+    "\002\015\014\000\002\015\004\000\002\015\005\000\002" +
+    "\015\011\000\002\015\012\000\002\015\016\000\002\015" +
+    "\017\000\002\015\013\000\002\015\014\000\002\015\007" +
+    "\000\002\015\010\000\002\015\012\000\002\015\013\000" +
+    "\002\015\014\000\002\015\015\000\002\015\016\000\002" +
+    "\015\017\000\002\015\007\000\002\015\010\000\002\015" +
+    "\011\000\002\015\012\000\002\015\013\000\002\015\014" +
+    "\000\002\015\012\000\002\015\013\000\002\015\014\000" +
+    "\002\015\015\000\002\015\016\000\002\015\017\000\002" +
+    "\015\014\000\002\015\015\000\002\015\016\000\002\015" +
+    "\017\000\002\016\003\000\002\016\003\000\002\016\006" +
+    "\000\002\016\003\000\002\027\007\000\002\030\005\000" +
+    "\002\017\003\000\002\017\007\000\002\017\007\000\002" +
+    "\023\005\000\002\024\007\000\002\024\010\000\002\024" +
+    "\011\000\002\024\012\000\002\024\007\000\002\024\010" +
+    "\000\002\024\011\000\002\024\012\000\002\025\003\000" +
+    "\002\025\005\000\002\021\015\000\002\021\017\000\002" +
+    "\022\003\000\002\022\003" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -58,116 +63,134 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\307\000\004\004\004\001\002\000\004\006\011\001" +
+    "\000\335\000\004\004\004\001\002\000\004\006\011\001" +
     "\002\000\004\002\006\001\002\000\004\002\000\001\002" +
-    "\000\004\005\311\001\002\000\004\010\043\001\002\000" +
-    "\010\020\013\021\012\061\016\001\002\000\004\055\034" +
-    "\001\002\000\004\040\031\001\002\000\004\007\030\001" +
-    "\002\000\004\055\020\001\002\000\004\055\020\001\002" +
-    "\000\004\050\023\001\002\000\010\042\uffc8\044\021\050" +
-    "\uffc8\001\002\000\004\055\020\001\002\000\006\042\uffc7" +
-    "\050\uffc7\001\002\000\012\007\ufffd\020\013\021\012\061" +
-    "\016\001\002\000\004\007\ufffc\001\002\000\004\050\026" +
-    "\001\002\000\012\007\ufffb\020\013\021\012\061\016\001" +
+    "\000\004\005\337\001\002\000\004\010\043\001\002\000" +
+    "\010\020\013\021\012\060\016\001\002\000\004\054\034" +
+    "\001\002\000\004\037\031\001\002\000\004\007\030\001" +
+    "\002\000\004\054\020\001\002\000\004\054\020\001\002" +
+    "\000\004\047\023\001\002\000\010\041\uffb8\043\021\047" +
+    "\uffb8\001\002\000\004\054\020\001\002\000\006\041\uffb7" +
+    "\047\uffb7\001\002\000\012\007\ufffd\020\013\021\012\060" +
+    "\016\001\002\000\004\007\ufffc\001\002\000\004\047\026" +
+    "\001\002\000\012\007\ufffb\020\013\021\012\060\016\001" +
     "\002\000\004\007\ufffa\001\002\000\004\010\ufffe\001\002" +
-    "\000\004\061\032\001\002\000\004\041\033\001\002\000" +
-    "\004\055\ufff7\001\002\000\004\052\035\001\002\000\004" +
-    "\043\036\001\002\000\004\055\020\001\002\000\004\042" +
-    "\040\001\002\000\004\050\041\001\002\000\012\007\ufff9" +
-    "\020\013\021\012\061\016\001\002\000\004\007\ufff8\001" +
-    "\002\000\004\062\301\001\002\000\004\012\045\001\002" +
+    "\000\004\060\032\001\002\000\004\040\033\001\002\000" +
+    "\004\054\ufff7\001\002\000\004\051\035\001\002\000\004" +
+    "\042\036\001\002\000\004\054\020\001\002\000\004\041" +
+    "\040\001\002\000\004\047\041\001\002\000\012\007\ufff9" +
+    "\020\013\021\012\060\016\001\002\000\004\007\ufff8\001" +
+    "\002\000\004\061\327\001\002\000\004\012\045\001\002" +
     "\000\004\014\121\001\002\000\004\016\047\001\002\000" +
     "\006\023\051\026\053\001\002\000\004\005\uffff\001\002" +
-    "\000\004\055\106\001\002\000\004\017\105\001\002\000" +
-    "\004\055\054\001\002\000\004\052\055\001\002\000\006" +
-    "\040\056\043\057\001\002\000\006\054\067\060\071\001" +
-    "\002\000\004\040\056\001\002\000\004\050\061\001\002" +
-    "\000\010\017\uffcc\023\051\026\053\001\002\000\004\017" +
-    "\uffcb\001\002\000\004\042\064\001\002\000\004\050\065" +
-    "\001\002\000\010\017\uffca\023\051\026\053\001\002\000" +
-    "\004\017\uffc9\001\002\000\004\044\uffc3\001\002\000\004" +
-    "\044\072\001\002\000\004\044\uffc4\001\002\000\006\054" +
-    "\067\060\071\001\002\000\004\044\074\001\002\000\006" +
-    "\054\067\060\071\001\002\000\004\044\076\001\002\000" +
-    "\006\054\067\060\071\001\002\000\004\044\100\001\002" +
-    "\000\004\060\101\001\002\000\004\041\102\001\002\000" +
-    "\010\042\uffc6\044\103\050\uffc6\001\002\000\004\040\056" +
-    "\001\002\000\006\042\uffc5\050\uffc5\001\002\000\004\005" +
-    "\uffd1\001\002\000\004\052\107\001\002\000\006\043\110" +
-    "\055\111\001\002\000\004\055\020\001\002\000\004\050" +
-    "\112\001\002\000\010\017\uffd0\023\051\026\053\001\002" +
-    "\000\004\017\uffcf\001\002\000\004\042\115\001\002\000" +
-    "\004\050\116\001\002\000\010\017\uffce\023\051\026\053" +
-    "\001\002\000\004\017\uffcd\001\002\000\004\013\277\001" +
-    "\002\000\004\055\122\001\002\000\004\053\123\001\002" +
-    "\000\016\022\124\025\130\030\127\033\125\035\132\055" +
-    "\131\001\002\000\004\040\272\001\002\000\010\022\234" +
-    "\030\235\055\236\001\002\000\004\015\230\001\002\000" +
-    "\004\040\202\001\002\000\004\055\177\001\002\000\004" +
-    "\050\173\001\002\000\004\055\133\001\002\000\004\047" +
-    "\134\001\002\000\010\020\135\055\140\061\137\001\002" +
-    "\000\006\036\uffd7\040\170\001\002\000\004\036\141\001" +
-    "\002\000\004\036\uffd8\001\002\000\004\036\uffd5\001\002" +
-    "\000\006\022\142\055\143\001\002\000\004\040\152\001" +
-    "\002\000\004\050\144\001\002\000\004\063\145\001\002" +
-    "\000\004\045\146\001\002\000\004\037\147\001\002\000" +
-    "\004\045\150\001\002\000\020\015\uffec\022\124\025\130" +
-    "\030\127\033\125\035\132\055\131\001\002\000\004\015" +
-    "\uffeb\001\002\000\004\057\154\001\002\000\004\041\163" +
-    "\001\002\000\006\041\uffd4\044\155\001\002\000\004\055" +
-    "\156\001\002\000\006\044\160\050\157\001\002\000\004" +
-    "\027\162\001\002\000\004\057\154\001\002\000\004\041" +
-    "\uffd3\001\002\000\004\041\uffd2\001\002\000\004\045\164" +
-    "\001\002\000\004\037\165\001\002\000\004\045\166\001" +
-    "\002\000\020\015\uffda\022\124\025\130\030\127\033\125" +
-    "\035\132\055\131\001\002\000\004\015\uffd9\001\002\000" +
-    "\004\061\171\001\002\000\004\041\172\001\002\000\004" +
-    "\036\uffd6\001\002\000\004\063\174\001\002\000\004\045" +
-    "\175\001\002\000\020\015\uffea\022\124\025\130\030\127" +
-    "\033\125\035\132\055\131\001\002\000\004\015\uffe9\001" +
-    "\002\000\004\045\200\001\002\000\020\015\uffee\022\124" +
-    "\025\130\030\127\033\125\035\132\055\131\001\002\000" +
-    "\004\015\uffed\001\002\000\004\055\203\001\002\000\004" +
-    "\050\204\001\002\000\004\027\205\001\002\000\004\051" +
-    "\206\001\002\000\004\064\207\001\002\000\004\041\210" +
-    "\001\002\000\004\032\211\001\002\000\006\022\212\055" +
-    "\213\001\002\000\004\040\223\001\002\000\004\050\214" +
-    "\001\002\000\004\063\215\001\002\000\004\045\216\001" +
-    "\002\000\022\015\uffe8\022\124\025\130\030\127\031\217" +
-    "\033\125\035\132\055\131\001\002\000\004\045\221\001" +
-    "\002\000\004\015\uffe7\001\002\000\020\015\uffe6\022\124" +
-    "\025\130\030\127\033\125\035\132\055\131\001\002\000" +
-    "\004\015\uffe5\001\002\000\004\057\154\001\002\000\004" +
-    "\041\225\001\002\000\004\045\226\001\002\000\020\015" +
-    "\uffdc\022\124\025\130\030\127\033\125\035\132\055\131" +
-    "\001\002\000\004\015\uffdb\001\002\000\004\055\231\001" +
-    "\002\000\004\053\232\001\002\000\006\013\ufff0\014\121" +
-    "\001\002\000\004\013\uffef\001\002\000\004\040\263\001" +
-    "\002\000\004\022\245\001\002\000\004\050\237\001\002" +
-    "\000\004\063\240\001\002\000\004\045\241\001\002\000" +
-    "\004\031\242\001\002\000\004\045\243\001\002\000\020" +
-    "\015\uffe0\022\124\025\130\030\127\033\125\035\132\055" +
-    "\131\001\002\000\004\015\uffdf\001\002\000\004\040\246" +
-    "\001\002\000\004\055\247\001\002\000\004\050\250\001" +
-    "\002\000\004\027\251\001\002\000\004\051\252\001\002" +
-    "\000\004\064\253\001\002\000\004\041\254\001\002\000" +
-    "\004\032\255\001\002\000\004\055\256\001\002\000\004" +
-    "\050\257\001\002\000\004\063\260\001\002\000\004\045" +
-    "\261\001\002\000\020\015\uffde\022\124\025\130\030\127" +
-    "\033\125\035\132\055\131\001\002\000\004\015\uffdd\001" +
-    "\002\000\004\057\154\001\002\000\004\041\265\001\002" +
-    "\000\004\045\266\001\002\000\004\031\267\001\002\000" +
-    "\004\045\270\001\002\000\020\015\uffe2\022\124\025\130" +
-    "\030\127\033\125\035\132\055\131\001\002\000\004\015" +
-    "\uffe1\001\002\000\004\057\154\001\002\000\004\041\274" +
-    "\001\002\000\004\045\275\001\002\000\020\015\uffe4\022" +
-    "\124\025\130\030\127\033\125\035\132\055\131\001\002" +
-    "\000\004\015\uffe3\001\002\000\004\016\ufff1\001\002\000" +
-    "\004\011\310\001\002\000\004\055\303\001\002\000\004" +
-    "\050\306\001\002\000\006\044\304\050\ufff3\001\002\000" +
-    "\004\055\303\001\002\000\004\050\ufff2\001\002\000\006" +
-    "\011\ufff5\062\301\001\002\000\004\011\ufff4\001\002\000" +
-    "\004\012\ufff6\001\002\000\004\002\001\001\002" });
+    "\000\004\054\106\001\002\000\004\017\105\001\002\000" +
+    "\004\054\054\001\002\000\004\051\055\001\002\000\006" +
+    "\037\056\042\057\001\002\000\006\053\067\057\071\001" +
+    "\002\000\004\037\056\001\002\000\004\047\061\001\002" +
+    "\000\010\017\uffbc\023\051\026\053\001\002\000\004\017" +
+    "\uffbb\001\002\000\004\041\064\001\002\000\004\047\065" +
+    "\001\002\000\010\017\uffba\023\051\026\053\001\002\000" +
+    "\004\017\uffb9\001\002\000\004\043\uffb3\001\002\000\004" +
+    "\043\072\001\002\000\004\043\uffb4\001\002\000\006\053" +
+    "\067\057\071\001\002\000\004\043\074\001\002\000\006" +
+    "\053\067\057\071\001\002\000\004\043\076\001\002\000" +
+    "\006\053\067\057\071\001\002\000\004\043\100\001\002" +
+    "\000\004\057\101\001\002\000\004\040\102\001\002\000" +
+    "\010\041\uffb6\043\103\047\uffb6\001\002\000\004\037\056" +
+    "\001\002\000\006\041\uffb5\047\uffb5\001\002\000\004\005" +
+    "\uffc1\001\002\000\004\051\107\001\002\000\006\042\110" +
+    "\054\111\001\002\000\004\054\020\001\002\000\004\047" +
+    "\112\001\002\000\010\017\uffc0\023\051\026\053\001\002" +
+    "\000\004\017\uffbf\001\002\000\004\041\115\001\002\000" +
+    "\004\047\116\001\002\000\010\017\uffbe\023\051\026\053" +
+    "\001\002\000\004\017\uffbd\001\002\000\004\013\325\001" +
+    "\002\000\004\054\122\001\002\000\004\052\123\001\002" +
+    "\000\016\022\124\025\130\030\127\033\125\034\132\054" +
+    "\131\001\002\000\004\037\320\001\002\000\010\022\235" +
+    "\030\236\054\131\001\002\000\004\015\231\001\002\000" +
+    "\004\037\201\001\002\000\004\054\176\001\002\000\004" +
+    "\047\174\001\002\000\004\054\136\001\002\000\004\044" +
+    "\134\001\002\000\020\015\uffea\022\124\025\130\030\127" +
+    "\033\125\034\132\054\131\001\002\000\004\015\uffe9\001" +
+    "\002\000\004\046\137\001\002\000\010\020\140\054\143" +
+    "\060\142\001\002\000\006\035\uffc9\037\171\001\002\000" +
+    "\004\035\144\001\002\000\004\035\uffca\001\002\000\004" +
+    "\035\uffc7\001\002\000\006\022\145\054\131\001\002\000" +
+    "\004\037\153\001\002\000\004\044\147\001\002\000\004" +
+    "\036\150\001\002\000\004\044\151\001\002\000\020\015" +
+    "\uffec\022\124\025\130\030\127\033\125\034\132\054\131" +
+    "\001\002\000\004\015\uffeb\001\002\000\004\056\155\001" +
+    "\002\000\004\040\164\001\002\000\006\040\uffc4\043\156" +
+    "\001\002\000\004\054\157\001\002\000\006\043\161\047" +
+    "\160\001\002\000\004\027\163\001\002\000\004\056\155" +
+    "\001\002\000\004\040\uffc3\001\002\000\004\040\uffc2\001" +
+    "\002\000\004\044\165\001\002\000\004\036\166\001\002" +
+    "\000\004\044\167\001\002\000\020\015\uffcc\022\124\025" +
+    "\130\030\127\033\125\034\132\054\131\001\002\000\004" +
+    "\015\uffcb\001\002\000\004\060\172\001\002\000\004\040" +
+    "\173\001\002\000\004\035\uffc8\001\002\000\004\062\175" +
+    "\001\002\000\004\044\uffc5\001\002\000\004\044\177\001" +
+    "\002\000\020\015\uffee\022\124\025\130\030\127\033\125" +
+    "\034\132\054\131\001\002\000\004\015\uffed\001\002\000" +
+    "\004\054\203\001\002\000\004\040\210\001\002\000\004" +
+    "\047\204\001\002\000\004\027\205\001\002\000\004\050" +
+    "\206\001\002\000\004\063\207\001\002\000\004\040\uffc6" +
+    "\001\002\000\004\032\211\001\002\000\006\022\212\054" +
+    "\131\001\002\000\004\037\221\001\002\000\004\044\214" +
+    "\001\002\000\022\015\uffe8\022\124\025\130\030\127\031" +
+    "\216\033\125\034\132\054\131\001\002\000\004\015\uffe7" +
+    "\001\002\000\004\044\217\001\002\000\020\015\uffe4\022" +
+    "\124\025\130\030\127\033\125\034\132\054\131\001\002" +
+    "\000\004\015\uffe3\001\002\000\004\056\155\001\002\000" +
+    "\004\040\223\001\002\000\004\044\224\001\002\000\022" +
+    "\015\uffce\022\124\025\130\030\127\031\226\033\125\034" +
+    "\132\054\131\001\002\000\004\015\uffcd\001\002\000\004" +
+    "\044\227\001\002\000\020\015\uffe6\022\124\025\130\030" +
+    "\127\033\125\034\132\054\131\001\002\000\004\015\uffe5" +
+    "\001\002\000\004\054\232\001\002\000\004\052\233\001" +
+    "\002\000\006\013\ufff0\014\121\001\002\000\004\013\uffef" +
+    "\001\002\000\004\037\306\001\002\000\006\022\262\037" +
+    "\261\001\002\000\004\044\240\001\002\000\006\022\241" +
+    "\031\242\001\002\000\004\037\250\001\002\000\004\044" +
+    "\243\001\002\000\022\015\uffda\022\124\025\130\030\127" +
+    "\031\245\033\125\034\132\054\131\001\002\000\004\015" +
+    "\uffd9\001\002\000\004\044\246\001\002\000\020\015\uffd8" +
+    "\022\124\025\130\030\127\033\125\034\132\054\131\001" +
+    "\002\000\004\015\uffd7\001\002\000\004\056\155\001\002" +
+    "\000\004\040\252\001\002\000\004\044\253\001\002\000" +
+    "\004\031\254\001\002\000\004\044\255\001\002\000\004" +
+    "\031\256\001\002\000\004\044\257\001\002\000\020\015" +
+    "\uffdc\022\124\025\130\030\127\033\125\034\132\054\131" +
+    "\001\002\000\004\015\uffdb\001\002\000\004\054\203\001" +
+    "\002\000\004\037\263\001\002\000\004\054\203\001\002" +
+    "\000\004\040\265\001\002\000\004\032\266\001\002\000" +
+    "\004\054\131\001\002\000\004\044\270\001\002\000\020" +
+    "\015\uffd6\022\124\025\130\030\127\033\125\034\132\054" +
+    "\131\001\002\000\004\015\uffd5\001\002\000\004\040\273" +
+    "\001\002\000\004\032\274\001\002\000\004\054\131\001" +
+    "\002\000\004\044\276\001\002\000\022\015\uffd4\022\124" +
+    "\025\130\030\127\031\300\033\125\034\132\054\131\001" +
+    "\002\000\004\015\uffd3\001\002\000\004\044\301\001\002" +
+    "\000\022\015\uffd2\022\124\025\130\030\127\031\303\033" +
+    "\125\034\132\054\131\001\002\000\004\015\uffd1\001\002" +
+    "\000\004\044\304\001\002\000\020\015\uffd0\022\124\025" +
+    "\130\030\127\033\125\034\132\054\131\001\002\000\004" +
+    "\015\uffcf\001\002\000\004\056\155\001\002\000\004\040" +
+    "\310\001\002\000\004\044\311\001\002\000\004\031\312" +
+    "\001\002\000\004\044\313\001\002\000\022\015\uffe0\022" +
+    "\124\025\130\030\127\031\315\033\125\034\132\054\131" +
+    "\001\002\000\004\015\uffdf\001\002\000\004\044\316\001" +
+    "\002\000\020\015\uffde\022\124\025\130\030\127\033\125" +
+    "\034\132\054\131\001\002\000\004\015\uffdd\001\002\000" +
+    "\004\056\155\001\002\000\004\040\322\001\002\000\004" +
+    "\044\323\001\002\000\020\015\uffe2\022\124\025\130\030" +
+    "\127\033\125\034\132\054\131\001\002\000\004\015\uffe1" +
+    "\001\002\000\004\016\ufff1\001\002\000\004\011\336\001" +
+    "\002\000\004\054\331\001\002\000\004\047\334\001\002" +
+    "\000\006\043\332\047\ufff3\001\002\000\004\054\331\001" +
+    "\002\000\004\047\ufff2\001\002\000\006\011\ufff5\061\327" +
+    "\001\002\000\004\011\ufff4\001\002\000\004\012\ufff6\001" +
+    "\002\000\004\002\001\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -175,7 +198,7 @@ public class parser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\307\000\004\002\004\001\001\000\006\003\006\004" +
+    "\000\335\000\004\002\004\001\001\000\006\003\006\004" +
     "\007\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\004\007\043\001\001\000\006\005\013\006" +
     "\014\001\001\000\002\001\001\000\002\001\001\000\002" +
@@ -187,7 +210,7 @@ public class parser extends java_cup.runtime.lr_parser {
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\004\025\036\001\001\000" +
     "\002\001\001\000\002\001\001\000\006\005\041\006\014" +
-    "\001\001\000\002\001\001\000\004\010\277\001\001\000" +
+    "\001\001\000\002\001\001\000\004\010\325\001\001\000" +
     "\004\013\045\001\001\000\004\014\117\001\001\000\004" +
     "\023\047\001\001\000\004\024\051\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
@@ -204,47 +227,60 @@ public class parser extends java_cup.runtime.lr_parser {
     "\000\004\025\113\001\001\000\002\001\001\000\004\024" +
     "\112\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\004\024\116\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
-    "\015\125\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\016" +
-    "\135\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\006" +
+    "\015\125\030\132\001\001\000\002\001\001\000\004\030" +
+    "\236\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\006\015\134\030\132\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\016\140\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\015\150\001" +
-    "\001\000\002\001\001\000\004\017\152\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\004\017\160\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\004\015\166\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\004\015\175" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\015" +
-    "\200\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\000\004\030\145\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\006\015\151" +
+    "\030\132\001\001\000\002\001\001\000\004\017\153\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\004\015\217\001\001\000\002\001\001" +
-    "\000\002\001\001\000\004\015\221\001\001\000\002\001" +
-    "\001\000\004\017\223\001\001\000\002\001\001\000\002" +
-    "\001\001\000\004\015\226\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\004\014\232\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\004\015\243\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\000\002\001\001\000\002\001\001\000\004\017\161\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\006\015\167\030" +
+    "\132\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\006\015\177\030\132\001\001" +
+    "\000\002\001\001\000\004\027\201\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\015\261\001\001\000\002\001\001\000\004\017\263" +
+    "\004\030\212\001\001\000\002\001\001\000\002\001\001" +
+    "\000\006\015\214\030\132\001\001\000\002\001\001\000" +
+    "\002\001\001\000\006\015\217\030\132\001\001\000\002" +
+    "\001\001\000\004\017\221\001\001\000\002\001\001\000" +
+    "\002\001\001\000\006\015\224\030\132\001\001\000\002" +
+    "\001\001\000\002\001\001\000\006\015\227\030\132\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\014\233\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\006\015\243\030" +
+    "\132\001\001\000\002\001\001\000\002\001\001\000\006" +
+    "\015\246\030\132\001\001\000\002\001\001\000\004\017" +
+    "\250\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\004\015\270\001\001\000\002" +
-    "\001\001\000\004\017\272\001\001\000\002\001\001\000" +
-    "\002\001\001\000\004\015\275\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\011\301\001" +
-    "\001\000\002\001\001\000\002\001\001\000\004\011\304" +
-    "\001\001\000\002\001\001\000\004\010\306\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001" });
+    "\001\000\006\015\257\030\132\001\001\000\002\001\001" +
+    "\000\004\027\271\001\001\000\002\001\001\000\004\027" +
+    "\263\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\030\266\001\001\000\002\001\001\000\006\015\270\030" +
+    "\132\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\004\030\274\001\001\000\002\001\001\000" +
+    "\006\015\276\030\132\001\001\000\002\001\001\000\002" +
+    "\001\001\000\006\015\301\030\132\001\001\000\002\001" +
+    "\001\000\002\001\001\000\006\015\304\030\132\001\001" +
+    "\000\002\001\001\000\004\017\306\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\006\015\313\030\132\001\001\000\002\001\001\000" +
+    "\002\001\001\000\006\015\316\030\132\001\001\000\002" +
+    "\001\001\000\004\017\320\001\001\000\002\001\001\000" +
+    "\002\001\001\000\006\015\323\030\132\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\004\011" +
+    "\327\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\011\332\001\001\000\002\001\001\000\004\010\334\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -631,106 +667,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE IDENT POINT ACTION_APPAREIL POINTVIRGULE FAIT POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-10)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 22: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE IDENT POINT ACTION_APPAREIL POINTVIRGULE FAIT POINTVIRGULE listeDeclarationScenarios 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-11)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // listeDeclarationScenarios ::= IDENT POINT ACTION_APPAREIL POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // listeDeclarationScenarios ::= IDENT POINT ACTION_APPAREIL POINTVIRGULE listeDeclarationScenarios 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // listeDeclarationScenarios ::= SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-12)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 26: // listeDeclarationScenarios ::= SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE listeDeclarationScenarios 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-13)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 27: // listeDeclarationScenarios ::= SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-14)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 28: // listeDeclarationScenarios ::= SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-15)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 29: // listeDeclarationScenarios ::= MESSAGE PG contenu_message PD POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // listeDeclarationScenarios ::= MESSAGE PG contenu_message PD POINTVIRGULE listeDeclarationScenarios 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 31: // listeDeclarationScenarios ::= SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 32: // listeDeclarationScenarios ::= SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+          case 21: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE action_ident POINTVIRGULE FAIT POINTVIRGULE 
             {
               Object RESULT =null;
 
@@ -739,7 +676,34 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 33: // listeDeclarationScenarios ::= SINON IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE 
+          case 22: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE action_ident POINTVIRGULE FAIT POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 23: // listeDeclarationScenarios ::= action_ident POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 24: // listeDeclarationScenarios ::= action_ident POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 25: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS action_ident POINTVIRGULE 
             {
               Object RESULT =null;
 
@@ -748,7 +712,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 34: // listeDeclarationScenarios ::= SINON IDENT POINT ACTION_APPAREIL POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+          case 26: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS action_ident POINTVIRGULE listeDeclarationScenarios 
             {
               Object RESULT =null;
 
@@ -757,43 +721,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 35: // listeDeclarationScenarios ::= SINON SI MESSAGE PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-14)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 36: // listeDeclarationScenarios ::= SINON SI MESSAGE PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS IDENT POINT ACTION_APPAREIL POINTVIRGULE listeDeclarationScenarios 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-15)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 37: // listeDeclarationScenarios ::= SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-13)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 38: // listeDeclarationScenarios ::= SI PG IDENT POINT ETAT EGALE ETAT_APPAREIL PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE listeDeclarationScenarios 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-14)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 39: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE MESSAGE PG contenu_message PD POINTVIRGULE FAIT POINTVIRGULE 
+          case 27: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE 
             {
               Object RESULT =null;
 
@@ -802,7 +730,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 40: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE MESSAGE PG contenu_message PD POINTVIRGULE FAIT POINTVIRGULE listeDeclarationScenarios 
+          case 28: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
             {
               Object RESULT =null;
 
@@ -811,7 +739,241 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 41: // categorie_appareils ::= TYPE_APPAREIL 
+          case 29: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-8)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 30: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 31: // listeDeclarationScenarios ::= MESSAGE PG contenu_message PD POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 32: // listeDeclarationScenarios ::= MESSAGE PG contenu_message PD POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 33: // listeDeclarationScenarios ::= SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 34: // listeDeclarationScenarios ::= SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-8)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 35: // listeDeclarationScenarios ::= SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 36: // listeDeclarationScenarios ::= SINON MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-10)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 37: // listeDeclarationScenarios ::= SINON action_ident POINTVIRGULE MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-11)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 38: // listeDeclarationScenarios ::= SINON action_ident POINTVIRGULE MESSAGE PG contenu_message PD POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-12)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 39: // listeDeclarationScenarios ::= SINON action_ident POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 40: // listeDeclarationScenarios ::= SINON action_ident POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 41: // listeDeclarationScenarios ::= SINON action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 42: // listeDeclarationScenarios ::= SINON action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 43: // listeDeclarationScenarios ::= SINON SI MESSAGE PG condition_ident PD ALORS action_ident POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-8)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 44: // listeDeclarationScenarios ::= SINON SI MESSAGE PG condition_ident PD ALORS action_ident POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 45: // listeDeclarationScenarios ::= SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 46: // listeDeclarationScenarios ::= SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-8)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 47: // listeDeclarationScenarios ::= SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 48: // listeDeclarationScenarios ::= SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-10)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 49: // listeDeclarationScenarios ::= SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-11)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 50: // listeDeclarationScenarios ::= SINON SI PG condition_ident PD ALORS action_ident POINTVIRGULE FINSI POINTVIRGULE FINSI POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-12)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 51: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 52: // listeDeclarationScenarios ::= SI PG condition_ident PD ALORS MESSAGE PG contenu_message PD POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-10)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 53: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE MESSAGE PG contenu_message PD POINTVIRGULE FAIT POINTVIRGULE 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-11)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 54: // listeDeclarationScenarios ::= POURTOUT IDENT DEUXPOINTS categorie_appareils FAIRE MESSAGE PG contenu_message PD POINTVIRGULE FAIT POINTVIRGULE listeDeclarationScenarios 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("listeDeclarationScenarios",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-12)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 55: // categorie_appareils ::= TYPE_APPAREIL 
             {
               Object RESULT =null;
 
@@ -820,7 +982,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 42: // categorie_appareils ::= AUTRE_APPAREIL 
+          case 56: // categorie_appareils ::= AUTRE_APPAREIL 
             {
               Object RESULT =null;
 
@@ -829,7 +991,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 43: // categorie_appareils ::= AUTRE_APPAREIL PG TYPE_APPAREIL PD 
+          case 57: // categorie_appareils ::= AUTRE_APPAREIL PG TYPE_APPAREIL PD 
             {
               Object RESULT =null;
 
@@ -838,7 +1000,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 44: // categorie_appareils ::= IDENT 
+          case 58: // categorie_appareils ::= IDENT 
             {
               Object RESULT =null;
 
@@ -847,7 +1009,25 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 45: // contenu_message ::= CHAINE 
+          case 59: // condition_ident ::= IDENT POINT ETAT EGALE ETAT_APPAREIL 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("condition_ident",21, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-4)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 60: // action_ident ::= IDENT POINT ACTION_APPAREIL 
+            {
+              Object RESULT =null;
+
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("action_ident",22, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 61: // contenu_message ::= CHAINE 
             {
               Object RESULT =null;
 
@@ -856,7 +1036,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 46: // contenu_message ::= CHAINE VIRGULE IDENT VIRGULE contenu_message 
+          case 62: // contenu_message ::= CHAINE VIRGULE IDENT VIRGULE contenu_message 
             {
               Object RESULT =null;
 
@@ -865,7 +1045,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 47: // contenu_message ::= CHAINE VIRGULE IDENT POINT ETAT 
+          case 63: // contenu_message ::= CHAINE VIRGULE IDENT POINT ETAT 
             {
               Object RESULT =null;
 
@@ -874,7 +1054,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 48: // dec_commandes ::= DEC_COMMANDES_DEBUT listeDeclarationCommandes DEC_COMMANDES_FIN 
+          case 64: // dec_commandes ::= DEC_COMMANDES_DEBUT listeDeclarationCommandes DEC_COMMANDES_FIN 
             {
               Object RESULT =null;
 
@@ -883,7 +1063,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 49: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT IDENT POINT 
+          case 65: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT IDENT POINT 
             {
               Object RESULT =null;
 
@@ -892,7 +1072,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 50: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT IDENT POINT listeDeclarationCommandes 
+          case 66: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT IDENT POINT listeDeclarationCommandes 
             {
               Object RESULT =null;
 
@@ -901,7 +1081,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 51: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT ACCOLADE_G liste_ident ACCOLADE_D POINT 
+          case 67: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT ACCOLADE_G liste_ident ACCOLADE_D POINT 
             {
               Object RESULT =null;
 
@@ -910,7 +1090,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 52: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT ACCOLADE_G liste_ident ACCOLADE_D POINT listeDeclarationCommandes 
+          case 68: // listeDeclarationCommandes ::= ASSOCIER IDENT AFFECT ACCOLADE_G liste_ident ACCOLADE_D POINT listeDeclarationCommandes 
             {
               Object RESULT =null;
 
@@ -919,7 +1099,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 53: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT liste_dates POINT 
+          case 69: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT liste_dates POINT 
             {
               Object RESULT =null;
 
@@ -928,7 +1108,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 54: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT liste_dates POINT listeDeclarationCommandes 
+          case 70: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT liste_dates POINT listeDeclarationCommandes 
             {
               Object RESULT =null;
 
@@ -937,7 +1117,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 55: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT ACCOLADE_G liste_dates ACCOLADE_D POINT 
+          case 71: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT ACCOLADE_G liste_dates ACCOLADE_D POINT 
             {
               Object RESULT =null;
 
@@ -946,7 +1126,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 56: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT ACCOLADE_G liste_dates ACCOLADE_D POINT listeDeclarationCommandes 
+          case 72: // listeDeclarationCommandes ::= PROGRAMMER IDENT AFFECT ACCOLADE_G liste_dates ACCOLADE_D POINT listeDeclarationCommandes 
             {
               Object RESULT =null;
 
@@ -955,7 +1135,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 57: // liste_ident ::= IDENT 
+          case 73: // liste_ident ::= IDENT 
             {
               Object RESULT =null;
 
@@ -964,7 +1144,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 58: // liste_ident ::= IDENT VIRGULE liste_ident 
+          case 74: // liste_ident ::= IDENT VIRGULE liste_ident 
             {
               Object RESULT =null;
 
@@ -973,7 +1153,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 59: // liste_dates ::= PG entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE ENTIER PD 
+          case 75: // liste_dates ::= PG entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE ENTIER PD 
             {
               Object RESULT =null;
 
@@ -982,7 +1162,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 60: // liste_dates ::= PG entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE ENTIER PD VIRGULE liste_dates 
+          case 76: // liste_dates ::= PG entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE ENTIER PD VIRGULE liste_dates 
             {
               Object RESULT =null;
 
@@ -991,7 +1171,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 61: // entierOuUnderscore ::= ENTIER 
+          case 77: // entierOuUnderscore ::= ENTIER 
             {
               Object RESULT =null;
 
@@ -1000,7 +1180,7 @@ void exemple_de_fonction(String i1, String i2)
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 62: // entierOuUnderscore ::= UNDERSCORE 
+          case 78: // entierOuUnderscore ::= UNDERSCORE 
             {
               Object RESULT =null;
 
