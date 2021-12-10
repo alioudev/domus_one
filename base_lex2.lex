@@ -46,7 +46,7 @@ crochet_fermant = ">"
 entier = [0-9]+
 ident = [a-zA-Z_]+[a-zA-Z0-9_]*
 chaine = \"[^\"\n]*\"
-commentaire = = "// "+ident
+commentaire = "//".*\n
 espace = " "
 finligne = "\t\n"
 
@@ -108,6 +108,8 @@ finligne = "\t\n"
 
 
 // exemple de r�gle de d�tection d'erreurs lexicales...
+{commentaire} {}
+
 [" " | \t | \n] {}
 .  {System.out.println(" Erreur ligne "+(yyline+1)+" colonne "+(yycolumn+1)+" : "+ yytext()+" => caractère inconnu ! "); } 
 
