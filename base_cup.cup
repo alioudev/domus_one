@@ -114,23 +114,102 @@ parser code {:
 
 action code {:
 
-// table identifiants appareils
-HashMap <String, String> declarationAppareils = new HashMap <String, String>();
-// table declarations interfaces
-HashMap <String, String> declarationInterfaces = new HashMap <String, String>();
-// table Scenarios
-LinkedHashMap <String, List<String>> declarationScenarios = new LinkedHashMap <String, List<String>>();
+	// table identifiants appareils
+	HashMap <String, String> hashAppareils = new HashMap <String, String>();
+	// table declarations ensembles appareils
+	HashMap <String, List<String>> hashEnsembleAppareils = new HashMap <String, List<String>>();
+	// table declarations interfaces
+	HashMap <String, String> hashInterfaces = new HashMap <String, String>();
+	// table Scenarios
+    LinkedHashMap <String, List<String>> declarationScenarios = new LinkedHashMap <String, List<String>>();
 // table declaration commandes
-HashMap <String, List<String>> declarationCommandes = new HashMap <String, List<String>>();
-// table programmation commandes
-HashMap <String, List<String>> declarationProgCommandes = new HashMap <String, List<String>>();
+	HashMap <String, List<String>> hashCommandes = new HashMap <String, List<String>>();
+	// table programmation commandes
+	HashMap <String, List<String>> hashProgCommandes = new HashMap <String, List<String>>();
 
+	// table identifiants appareils
+	HashMap <String, String> TableIdentAppareils = new HashMap <String, String>();
+	// listes temporaires pour insertion dans les tables des symboles
+	List<String> tempList= new ArrayList<String>();
 
-void exemple_de_fonction(String i1, String i2)
-{
-	String m = "Erreur syntaxique <"+i2+"> au lieu de <"+i1+">";
+	void exemple_de_fonction(String i1, String i2)
+	{
+		String m = "Erreur syntaxique <"+i2+"> au lieu de <"+i1+">";
+		if (!(i1.equals(i2))) parser.report_error(m,null);	 
 	if (!(i1.equals(i2))) parser.report_error(m,null);	 
-}
+		if (!(i1.equals(i2))) parser.report_error(m,null);	 
+	}
+
+	// Liste contenant les IDENT trouvés 
+	//HashMap<String,Object> listeIdents = new HashMap<String,Object>();
+	ArrayList<String> listeIdents = new ArrayList<String>();
+	HashMap <String, List<String>> declarationEnsAppareils = new HashMap <String, List<String>>();
+
+
+	// fonction dinsertion des appareils avec leur type
+	public void insererTableIdentAppareils( String s){
+		for(int i=0;i<listeIdents.size();i++){
+			if(notExist(listeIdents.get(i), TableIdentAppareils)){
+				TableIdentAppareils.put(listeIdents.get(i).toString(), s);
+			}else{
+				System.out.println("Erreur sémantique :  identifiant déja existant =>"+listeIdents.get(i));
+			}		}
+		tempList.clear();
+	}
+
+	// fonction dajout dune ou plusieurs appareils dans un ensemble de meme type
+	public void insererDeclarationEnsAppareils(String s,List<String> l){
+		List<String> temp = new ArrayList<String>();
+		for(int i=0;i<l.size();i++){
+			temp.add(l.get(i));
+		}
+		// verifier si lidentifiant de lensemble nexiste pas
+		if(notExist(s,declarationEnsAppareils)){
+			declarationEnsAppareils.put(s,temp);
+		}
+		tempList.clear();
+	}
+
+	// fonction permettant de verifier si un ident en parametre appartient à une table des symbole
+	public boolean notExist(String s, HashMap table){
+		if(table.containsKey(s)) return false;
+		return true;
+	}
+
+
+	// generation code dans "CMaisonUser.java" : generation des Appareils - Interfaces - Scenarios - ...
+	public void GenererCodeCMaisonUser(){
+		String debut = " public class CMaisonUser extends CMaison { \n"+
+		"\t public CMaisonUser() { \n"+
+		"\t \t super(); \n \n \n";
+		String fin = "\n \n \n \t \t monHabitat = new HabitatSpecific(ma_liste_appareils, \n"+
+			"\t \t \t ma_liste_ens_appareils, ma_liste_scenarios,\n"+
+				"\t \t \t \t ma_liste_interfaces, ma_liste_programmations);\n"+
+	"\t }\n"+
+	"}\n";
+		writeIntoCMaisonUser(debut);
+
+		//GenererCodeListeIdentifiantsAppareils();
+		//GenererCodeListeEnsAppareils();
+		
+		writeIntoCMaisonUser(fin);
+	}
+	// ecriture dans le fichier CmaisonUser.java
+	public static void writeIntoCMaisonUser(String s){
+			try {
+
+				// Open given file in append mode.
+				BufferedWriter out = new BufferedWriter(
+					new FileWriter("CMaisonUser.java", true));
+
+				out.write(s);
+				out.newLine();
+				out.close();
+			}
+			catch (IOException e) {
+				System.out.println("exception occured" + e);
+			}
+	}
 
 :}
 
