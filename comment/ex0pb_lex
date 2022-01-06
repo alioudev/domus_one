@@ -1,0 +1,40 @@
+<PROGRAMME_DOMUS>
+// Programme de test avec 6 ou 7 erreurs lexicales
+// declaration des appareils
+<DECLARATION_APPAREILS>
+	eclairage e1, e2, e3. 
+	volet v1, 2v2 v3.
+	alarme a1.
+</DECLARATION_APPAREILS>
+
+// déclaration des interfaces
+<DECLARATION_INTERFACES>
+    interrupteur b1.
+    telecommande $tc.
+    mobile m. 
+</DECLARATION_INTERFACES>
+
+// declaration des scenarii
+<DECLARATION_SCENARII>
+	// declaration du scenario bonjour
+	<SCENARIO bonjour>
+		e1.allumer;
+		message("bonjour ); 
+		si (v1.etat == ouvert) alors v1.fermer; fsi;
+	</SCENARIO bonjour>
+
+	<SCENARIO test>
+		pourtout v:volet faire v.ouvrir; fait;
+		#?!!
+		e1.eteindre;
+	</SCENARIO test>
+// fin scenarii
+</DECLARATION_SCENARII>
+
+// declaration des commandes
+<DECLARATION_COMMANDES>
+	associer b1 = bonjour.
+	associer m = test.
+</DECLARATION_COMMANDES>
+</PROGRAMME_DOMUS>
+

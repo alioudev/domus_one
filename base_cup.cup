@@ -4,6 +4,141 @@ import java.util.*;
 import java.io.*;
  
 parser code {:
+
+		public static void main(String args[]) throws Exception {
+			//new parser(new Yylex(System.in)).parse();
+			new parser(new Yylex(new InputStreamReader(System.in))).parse();
+		}
+
+		public void syntax_error(Symbol cur_token) { 
+			// n'interrompt pas la compil... 
+			// on est par defaut dans l'etat error qui permet ensuite la recup
+			// par defaut : report_error("syntax error", null);
+			report_error("Syntaxe incorrecte <"+tokenToString(cur_token)+">", null);        
+		}
+
+		public void report_error(String message, Object info) {   
+			// n'interrompt pas la compil
+			if (info == null) System.err.println("Mon erreur <"+ ptext()+ "> ligne "+ pline() + ", colonne " + pcolumn() + " : " + message);
+			else System.err.println("Mon erreur <"+ptext()+ "> ligne "+ pline() + ", colonne " + pcolumn() + " : " +message+" : "+info);
+			System.err.println("-> mais on continue l'analyse... ");
+		}
+
+		public void unrecovered_syntax_error(Symbol cur_token) {
+			// par defaut : report_fatal_error("Couldn't repair and continue parse", null);
+			// on n'a pas reussi a faire de la recup
+			report_fatal_error("Recuperation impossible <"+tokenToString(cur_token)+">", null);   // interrompt la compil     
+		}
+
+		public void report_fatal_error(String message, Object info) {  
+			// qd cette fct est appelee, message vaut par defaut "Couldn't repair and continue parse"
+			String m = "Mon erreur fatale <"+ ptext()+ "> ligne " + pline() + ", colonne " + pcolumn() + " : " + message;
+			if (info == null) System.err.println(m);
+			else System.err.println(m+" : "+info);
+			System.err.println("-> arr�t de l'analyse...");
+			done_parsing(); // interrompt la compil
+		}
+
+		public int pline(){
+			return ((Yylex)getScanner()).getYyLine();
+		}
+		public int pcolumn(){
+			return ((Yylex)getScanner()).getYyColumn();
+		}
+		public String ptext(){
+			return ((Yylex)getScanner()).getYyText();
+		}
+
+
+	public String tokenToString (Symbol token) {
+	// qqs exemples pour voir...
+		switch (token.sym) {
+		case sym.SI : return "SI"; 
+		case sym.CHAINE : return "CHAINE "+token.value;  
+		case sym.ENTIER : return "ENTIER "+token.value;  
+		case sym.TYPE_INTERFACE : return "TYPE_INTERFACE"+token.value;  
+		case sym.TYPE_APPAREIL : return "TYPE_APPAREIL"+token.value;  
+		case sym.ACTION_APPAREIL : return "ACTION_APPAREIL"+token.value;  
+		case sym.ETAT_APPAREIL : return "ETAT_APPAREIL"+token.value;  
+		//  ... A compl�ter !!
+		case sym.PROGRAMME_DOMUS_DEBUT : return "PROGRAMME_DOMUS";
+		case sym.PROGRAMME_DOMUS_FIN : return "FINPROGRAMME_DOMUS";
+		case sym.DEC_APPAREILS_DEBUT : return "DEC_APPAREILS_DEBUT";
+		case sym.DEC_APPAREILS_FIN : return "DEC_APPAREILS_FIN";
+		case sym.DEC_INTERFACES_DEBUT : return "DEC_INTERFACES_DEBUT";
+		case sym.DEC_INTERFACES_FIN : return "DEC_INTERFACES_FIN";
+		case sym.DEC_SCENARII_DEBUT : return "DEC_SCENARII_DEBUT";
+		case sym.DEC_SCENARII_FIN : return "DEC_SCENARII_FIN";
+		case sym.DEC_COMMANDES_DEBUT : return "DEC_COMMANDES_DEBUT";
+		case sym.DEC_COMMANDES_FIN : return "DEC_COMMANDES_FIN";
+		case sym.DEC_SCENARIO_DEBUT : return "DEC_SCENARIO_DEBUT";
+		case sym.DEC_SCENARIO_FIN : return "DEC_SCENARIO_FIN";
+		case sym.AUTRE_APPAREIL : return "AUTRE_APPAREIL";
+		case sym.DEFINIR : return "DEFINIR";
+		case sym.MESSAGE : return "MESSAGE";
+		case sym.VIRGULE : return "VIRGULE";
+		case sym.ASSOCIER : return "ASSOCIER";
+		case sym.EXECUTER : return "EXECUTER";
+		case sym.EXECUTER_SCENARIO : return "EXECUTER_SCENARIO";
+		case sym.PROGRAMMER : return "PROGRAMMER";
+		case sym.ETAT : return "ETAT";
+		case sym.ALORS : return "ALORS";
+		case sym.SINON : return "SINON";
+		case sym.FINSI : return "FINSI";
+		case sym.POURTOUT : return "POURTOUT";
+		case sym.FAIRE : return "FAIRE";
+		case sym.FAIT : return "FAIT";
+		case sym.PG : return "PG";
+		case sym.PD : return "PD";
+		case sym.GUILLEMET : return "GUILLEMET";
+		case sym.POINTEXCLAMATION : return "POINTEXCLAMATION";
+		case sym.ACCOLADE_D : return "ACCOLADE_D";
+		case sym.ACCOLADE_G : return "ACCOLADE_G";
+		case sym.POINTVIRGULE : return "POINTVIRGULE";
+		case sym.DEUXPOINTS : return "DEUXPOINTS";
+		case sym.POINT: return "POINT";
+		case sym.EGALE : return "EGALE";
+		case sym.AFFECT : return "AFFECT";
+		case sym.UNDERSCORE : return "UNDERSCORE";
+		case sym.IDENT : return "IDENT";
+		case sym.CROCHET_FERMANT : return "CROCHET_FERMANT";
+
+
+		default : return "Token imprevu ou error";
+		}
+	}
+
+:}
+
+
+
+action code {:
+
+// table identifiants appareils
+HashMap <String, String> declarationAppareils = new HashMap <String, String>();
+// table declarations interfaces
+HashMap <String, String> declarationInterfaces = new HashMap <String, String>();
+// table Scenarios
+LinkedHashMap <String, List<String>> declarationScenarios = new LinkedHashMap <String, List<String>>();
+// table declaration commandes
+HashMap <String, List<String>> declarationCommandes = new HashMap <String, List<String>>();
+// table programmation commandes
+HashMap <String, List<String>> declarationProgCommandes = new HashMap <String, List<String>>();
+
+
+void exemple_de_fonction(String i1, String i2)
+{
+	String m = "Erreur syntaxique <"+i2+"> au lieu de <"+i1+">";
+	if (!(i1.equals(i2))) parser.report_error(m,null);	 
+}
+
+// Specification JCup
+import java_cup.runtime.*;
+import java.util.*;
+import java.io.*;
+ 
+parser code {:
+
 	public static void main(String args[]) throws Exception {
 		//new parser(new Yylex(System.in)).parse();
 		new parser(new Yylex(new InputStreamReader(System.in))).parse();
@@ -111,29 +246,6 @@ public String tokenToString (Symbol token) {
 
 
 
-action code {:
-
-// table identifiants appareils
-HashMap <String, String> hashAppareils = new HashMap <String, String>();
-// table declarations ensembles appareils
-HashMap <String, List<String>> hashEnsembleAppareils = new HashMap <String, List<String>>();
-// table declarations interfaces
-HashMap <String, String> hashInterfaces = new HashMap <String, String>();
-// table Scenarios
-LinkedHashMap <String, List<String>> hashScenarios = new LinkedHashMap <String, List<String>>();
-// table declaration commandes
-HashMap <String, List<String>> hashCommandes = new HashMap <String, List<String>>();
-// table programmation commandes
-HashMap <String, List<String>> hashProgCommandes = new HashMap <String, List<String>>();
-
-
-void exemple_de_fonction(String i1, String i2)
-{
-	String m = "Erreur syntaxique <"+i2+"> au lieu de <"+i1+">";
-	if (!(i1.equals(i2))) parser.report_error(m,null);	 
-}
-
-:}
 
 
 terminal				PROGRAMME_DOMUS_DEBUT;
@@ -186,17 +298,16 @@ terminal String				TYPE_INTERFACE;
 terminal String				ACTION_APPAREIL;
 terminal String				ETAT_APPAREIL;
 
-terminal VAR;
 
-non terminal domus,prog,dec_appareils,listeDeclarationAppareils,liste_autres_appareils,dec_interfaces,listeDeclarationInterfaces,listeInterfaces, varia;
-non terminal dec_scenarii,listeDeclarationScenariis,listeDeclarationScenarios,categorie_appareils,contenu_message,identOUaction,liste_dates,entierOuUnderscore, dec_commandes,listeDeclarationCommandes,liste_ident,appareils ;
+non terminal domus,prog,dec_appareils,listeDeclarationAppareils,liste_autres_appareils,dec_interfaces,listeDeclarationInterfaces,listeInterfaces;
+non terminal dec_scenarii,listeDeclarationScenariis,listeDeclarationScenarios,categorie_appareils,contenu_message,liste_dates,entierOuUnderscore, dec_commandes,listeDeclarationCommandes,liste_ident,appareils ;
 non terminal condition_ident, action_ident; 
 
 
  // un 'fichier' DOMUS
-domus	::=  PROGRAMME_DOMUS_DEBUT  prog PROGRAMME_DOMUS_FIN {: System.out.println("PROGRAMME_DOMUS_FIN OK"+parser.pline()+","+parser.pcolumn()); :};
+domus	::=  PROGRAMME_DOMUS_DEBUT  prog PROGRAMME_DOMUS_FIN {: System.out.println("PROGRAMME_DOMUS_FIN OK"+parser.pline()+","+parser.pcolumn()); GenererCodeCMaisonUser(); GenererCodehabitatSpecific(); :};
 
-// corps du programme DOMUS : ensemble de declaration 
+// corps du programme DOMUS 
 prog ::= dec_appareils dec_interfaces dec_scenarii dec_commandes {: System.out.println("PROG OK"); :};
 
 
@@ -292,6 +403,5 @@ liste_ident ::= IDENT | IDENT VIRGULE liste_ident;
 liste_dates ::= PG entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE ENTIER PD
 		| PG entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE entierOuUnderscore VIRGULE ENTIER PD VIRGULE liste_dates;
 entierOuUnderscore ::= ENTIER | UNDERSCORE;
-
 
 

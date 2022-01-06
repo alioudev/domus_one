@@ -56,7 +56,6 @@ public class sym {
   public static final int CHAINE = 44;
   public static final int FINSI = 23;
   public static final int EXECUTER_SCENARIO = 19;
-  public static final int VAR = 50;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -107,8 +106,7 @@ public class sym {
   "TYPE_APPAREIL",
   "TYPE_INTERFACE",
   "ACTION_APPAREIL",
-  "ETAT_APPAREIL",
-  "VAR"
+  "ETAT_APPAREIL"
   };
 }
 
