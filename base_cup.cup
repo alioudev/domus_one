@@ -274,7 +274,7 @@ non terminal condition_ident, action_ident;
 
 
  // un 'fichier' DOMUS
-domus	::=  PROGRAMME_DOMUS_DEBUT  prog PROGRAMME_DOMUS_FIN {: System.out.println("PROGRAMME_DOMUS_FIN OK"+parser.pline()+","+parser.pcolumn()); GenererCodeCMaisonUser(); GenererCodehabitatSpecific(); :};
+domus	::=  PROGRAMME_DOMUS_DEBUT  prog PROGRAMME_DOMUS_FIN {: System.out.println("PROGRAMME_DOMUS_FIN OK"+parser.pline()+","+parser.pcolumn()); GenererCodeCMaisonUser(); :};
 
 // corps du programme DOMUS 
 prog ::= dec_appareils dec_interfaces dec_scenarii dec_commandes {: System.out.println("PROG OK"); :};

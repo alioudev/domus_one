@@ -431,133 +431,102 @@ class CUP$parser$actions {
 
 
 
-// table identifiants appareils
-HashMap <String, String> declarationAppareils = new HashMap <String, String>();
-// table declarations interfaces
-HashMap <String, String> declarationInterfaces = new HashMap <String, String>();
-// table Scenarios
-LinkedHashMap <String, List<String>> declarationScenarios = new LinkedHashMap <String, List<String>>();
+	// table identifiants appareils
+	HashMap <String, String> hashAppareils = new HashMap <String, String>();
+	// table declarations ensembles appareils
+	HashMap <String, List<String>> hashEnsembleAppareils = new HashMap <String, List<String>>();
+	// table declarations interfaces
+	HashMap <String, String> hashInterfaces = new HashMap <String, String>();
+	// table Scenarios
+    LinkedHashMap <String, List<String>> declarationScenarios = new LinkedHashMap <String, List<String>>();
 // table declaration commandes
-HashMap <String, List<String>> declarationCommandes = new HashMap <String, List<String>>();
-// table programmation commandes
-HashMap <String, List<String>> declarationProgCommandes = new HashMap <String, List<String>>();
+	HashMap <String, List<String>> hashCommandes = new HashMap <String, List<String>>();
+	// table programmation commandes
+	HashMap <String, List<String>> hashProgCommandes = new HashMap <String, List<String>>();
 
+	// table identifiants appareils
+	HashMap <String, String> TableIdentAppareils = new HashMap <String, String>();
+	// listes temporaires pour insertion dans les tables des symboles
+	List<String> tempList= new ArrayList<String>();
 
-void exemple_de_fonction(String i1, String i2)
-{
-	String m = "Erreur syntaxique <"+i2+"> au lieu de <"+i1+">";
+	void exemple_de_fonction(String i1, String i2)
+	{
+		String m = "Erreur syntaxique <"+i2+"> au lieu de <"+i1+">";
+		if (!(i1.equals(i2))) parser.report_error(m,null);	 
 	if (!(i1.equals(i2))) parser.report_error(m,null);	 
-}
-
-// Specification JCup
-import java_cup.runtime.*;
-import java.util.*;
-import java.io.*;
- 
-parser code {:
-
-	public static void main(String args[]) throws Exception {
-		//new parser(new Yylex(System.in)).parse();
-		new parser(new Yylex(new InputStreamReader(System.in))).parse();
+		if (!(i1.equals(i2))) parser.report_error(m,null);	 
 	}
 
-	public void syntax_error(Symbol cur_token) { 
-		// n'interrompt pas la compil... 
-		// on est par defaut dans l'etat error qui permet ensuite la recup
-		// par defaut : report_error("syntax error", null);
-		report_error("Syntaxe incorrecte <"+tokenToString(cur_token)+">", null);        
+	// Liste contenant les IDENT trouvés 
+	//HashMap<String,Object> listeIdents = new HashMap<String,Object>();
+	ArrayList<String> listeIdents = new ArrayList<String>();
+	HashMap <String, List<String>> declarationEnsAppareils = new HashMap <String, List<String>>();
+
+
+	// fonction dinsertion des appareils avec leur type
+	public void insererTableIdentAppareils( String s){
+		for(int i=0;i<listeIdents.size();i++){
+			if(notExist(listeIdents.get(i), TableIdentAppareils)){
+				TableIdentAppareils.put(listeIdents.get(i).toString(), s);
+			}else{
+				System.out.println("Erreur sémantique :  identifiant déja existant =>"+listeIdents.get(i));
+			}		}
+		tempList.clear();
 	}
 
-	public void report_error(String message, Object info) {   
-		// n'interrompt pas la compil
-		if (info == null) System.err.println("Mon erreur <"+ ptext()+ "> ligne "+ pline() + ", colonne " + pcolumn() + " : " + message);
-		else System.err.println("Mon erreur <"+ptext()+ "> ligne "+ pline() + ", colonne " + pcolumn() + " : " +message+" : "+info);
-		System.err.println("-> mais on continue l'analyse... ");
+	// fonction dajout dune ou plusieurs appareils dans un ensemble de meme type
+	public void insererDeclarationEnsAppareils(String s,List<String> l){
+		List<String> temp = new ArrayList<String>();
+		for(int i=0;i<l.size();i++){
+			temp.add(l.get(i));
+		}
+		// verifier si lidentifiant de lensemble nexiste pas
+		if(notExist(s,declarationEnsAppareils)){
+			declarationEnsAppareils.put(s,temp);
+		}
+		tempList.clear();
 	}
 
-	public void unrecovered_syntax_error(Symbol cur_token) {
-    	// par defaut : report_fatal_error("Couldn't repair and continue parse", null);
-		// on n'a pas reussi a faire de la recup
-		report_fatal_error("Recuperation impossible <"+tokenToString(cur_token)+">", null);   // interrompt la compil     
-	}
-
-	public void report_fatal_error(String message, Object info) {  
-		// qd cette fct est appelee, message vaut par defaut "Couldn't repair and continue parse"
-		String m = "Mon erreur fatale <"+ ptext()+ "> ligne " + pline() + ", colonne " + pcolumn() + " : " + message;
-		if (info == null) System.err.println(m);
-		else System.err.println(m+" : "+info);
-		System.err.println("-> arr�t de l'analyse...");
-		done_parsing(); // interrompt la compil
-  	}
-
-	public int pline(){
-		return ((Yylex)getScanner()).getYyLine();
-	}
-	public int pcolumn(){
-		return ((Yylex)getScanner()).getYyColumn();
-	}
-	public String ptext(){
-		return ((Yylex)getScanner()).getYyText();
+	// fonction permettant de verifier si un ident en parametre appartient à une table des symbole
+	public boolean notExist(String s, HashMap table){
+		if(table.containsKey(s)) return false;
+		return true;
 	}
 
 
-public String tokenToString (Symbol token) {
-// qqs exemples pour voir...
-     switch (token.sym) {
-	case sym.SI : return "SI"; 
-	case sym.CHAINE : return "CHAINE "+token.value;  
-	case sym.ENTIER : return "ENTIER "+token.value;  
-	case sym.TYPE_INTERFACE : return "TYPE_INTERFACE"+token.value;  
-	case sym.TYPE_APPAREIL : return "TYPE_APPAREIL"+token.value;  
-	case sym.ACTION_APPAREIL : return "ACTION_APPAREIL"+token.value;  
-	case sym.ETAT_APPAREIL : return "ETAT_APPAREIL"+token.value;  
-	//  ... A compl�ter !!
-	case sym.PROGRAMME_DOMUS_DEBUT : return "PROGRAMME_DOMUS";
-	case sym.PROGRAMME_DOMUS_FIN : return "FINPROGRAMME_DOMUS";
-	case sym.DEC_APPAREILS_DEBUT : return "DEC_APPAREILS_DEBUT";
-	case sym.DEC_APPAREILS_FIN : return "DEC_APPAREILS_FIN";
-	case sym.DEC_INTERFACES_DEBUT : return "DEC_INTERFACES_DEBUT";
-	case sym.DEC_INTERFACES_FIN : return "DEC_INTERFACES_FIN";
-	case sym.DEC_SCENARII_DEBUT : return "DEC_SCENARII_DEBUT";
-	case sym.DEC_SCENARII_FIN : return "DEC_SCENARII_FIN";
-	case sym.DEC_COMMANDES_DEBUT : return "DEC_COMMANDES_DEBUT";
-	case sym.DEC_COMMANDES_FIN : return "DEC_COMMANDES_FIN";
-	case sym.DEC_SCENARIO_DEBUT : return "DEC_SCENARIO_DEBUT";
-	case sym.DEC_SCENARIO_FIN : return "DEC_SCENARIO_FIN";
-	case sym.AUTRE_APPAREIL : return "AUTRE_APPAREIL";
-	case sym.DEFINIR : return "DEFINIR";
-	case sym.MESSAGE : return "MESSAGE";
-	case sym.VIRGULE : return "VIRGULE";
-	case sym.ASSOCIER : return "ASSOCIER";
-	case sym.EXECUTER : return "EXECUTER";
-	case sym.EXECUTER_SCENARIO : return "EXECUTER_SCENARIO";
-	case sym.PROGRAMMER : return "PROGRAMMER";
-	case sym.ETAT : return "ETAT";
-	case sym.ALORS : return "ALORS";
-	case sym.SINON : return "SINON";
-	case sym.FINSI : return "FINSI";
-	case sym.POURTOUT : return "POURTOUT";
-	case sym.FAIRE : return "FAIRE";
-	case sym.FAIT : return "FAIT";
-	case sym.PG : return "PG";
-	case sym.PD : return "PD";
-	case sym.GUILLEMET : return "GUILLEMET";
-	case sym.POINTEXCLAMATION : return "POINTEXCLAMATION";
-	case sym.ACCOLADE_D : return "ACCOLADE_D";
-	case sym.ACCOLADE_G : return "ACCOLADE_G";
-	case sym.POINTVIRGULE : return "POINTVIRGULE";
-	case sym.DEUXPOINTS : return "DEUXPOINTS";
-	case sym.POINT: return "POINT";
-	case sym.EGALE : return "EGALE";
-	case sym.AFFECT : return "AFFECT";
-	case sym.UNDERSCORE : return "UNDERSCORE";
-	case sym.IDENT : return "IDENT";
-	case sym.CROCHET_FERMANT : return "CROCHET_FERMANT";
+	// generation code dans "CMaisonUser.java" : generation des Appareils - Interfaces - Scenarios - ...
+	public void GenererCodeCMaisonUser(){
+		String debut = " public class CMaisonUser extends CMaison { \n"+
+		"\t public CMaisonUser() { \n"+
+		"\t \t super(); \n \n \n";
+		String fin = "\n \n \n \t \t monHabitat = new HabitatSpecific(ma_liste_appareils, \n"+
+			"\t \t \t ma_liste_ens_appareils, ma_liste_scenarios,\n"+
+				"\t \t \t \t ma_liste_interfaces, ma_liste_programmations);\n"+
+	"\t }\n"+
+	"}\n";
+		writeIntoCMaisonUser(debut);
 
-
-	default : return "Token imprevu ou error";
+		//GenererCodeListeIdentifiantsAppareils();
+		//GenererCodeListeEnsAppareils();
+		
+		writeIntoCMaisonUser(fin);
 	}
-}
+	// ecriture dans le fichier CmaisonUser.java
+	public static void writeIntoCMaisonUser(String s){
+			try {
+
+				// Open given file in append mode.
+				BufferedWriter out = new BufferedWriter(
+					new FileWriter("CMaisonUser.java", true));
+
+				out.write(s);
+				out.newLine();
+				out.close();
+			}
+			catch (IOException e) {
+				System.out.println("exception occured" + e);
+			}
+	}
 
 
   private final parser parser;
@@ -585,7 +554,7 @@ public String tokenToString (Symbol token) {
           case 0: // domus ::= PROGRAMME_DOMUS_DEBUT prog PROGRAMME_DOMUS_FIN 
             {
               Object RESULT =null;
-		 System.out.println("PROGRAMME_DOMUS_FIN OK"+parser.pline()+","+parser.pcolumn()); GenererCodeCMaisonUser(); GenererCodehabitatSpecific(); 
+		 System.out.println("PROGRAMME_DOMUS_FIN OK"+parser.pline()+","+parser.pcolumn()); GenererCodeCMaisonUser(); 
               CUP$parser$result = parser.getSymbolFactory().newSymbol("domus",0, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
